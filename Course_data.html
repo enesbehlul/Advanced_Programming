@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Course Data</title>
+    <style>
+    .inp { 
+        font-weight: bold;
+        color: black;
+        text-align: left;
+    }
+    #nam { 
+        margin-left: 23px;
+    }
+    #midterm { 
+        margin-left: 2px;
+    }
+    #final { 
+        margin-left: 28px;
+    }
+    #avg { 
+        margin-left: 15px;
+    }
+</style>
+</head>
+<script>
+"use strict";
+let max = 0
+let maxi = 0
+const dersler = []
+console.log("dersler oluşturuldu")
+function Add() {
+	dersler.push([nam.value,Number(midterm.value),Number(final.value)])
+	console.log(nam.value)
+}
+function Print() {
+	prt.innerText = ""
+	for (var i = 0; i < dersler.length; i++) {
+		prt.innerText += dersler[i].join(" ")+"\n"
+	}
+}
+function Avg() {
+	avar.innerText = ""
+	let ort = 0
+	for (var i = 0; i < dersler.length; i++) {
+		ort = (dersler[i][1]+dersler[i][2])/2
+		if (ort > max) {
+			max = ort
+			maxi = i
+		}
+		avar.innerText += dersler[i][0]+" "+ort+"\n"
+	}
+}
+function Max() {
+	mx.innerText = dersler[maxi][0]+" "+max
+}
+</script>
+<body>
+	<h1>Add Course</h1>
+	<p class="inp">Name<input type="text" id="nam" style="width:200px"></p>
+	<p class="inp">Midterm<input type="text" id="midterm" style="width:200px"> </p>
+	<p class="inp">Final<input type="text" id="final" style="width:200px"> </p>
+	<p><input type="button" value="Add" onclick="Add()"></p>
+	<p>
+		<input type="button" value="Print" id="print" onclick="Print()">
+		<input type="button" value="Avg" id="avg" onclick="Avg()">
+		<input type="button" value="Max" id="max" onclick="Max()">
+	</p>
+	<hr>
+	<p><b>Name Midterm Final</b></p>
+	<p id="prt"></p><hr>
+	<p><b>Name Average</b></p>
+	<p id="avar"></p><hr>
+	<p><b>Name Max</b></p>
+	<p id="mx"></p>
+</body>
+</html>
