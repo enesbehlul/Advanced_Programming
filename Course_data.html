@@ -40,8 +40,9 @@ function Print() {
 		prt.innerText += dersler[i].join(" ")+"\n"
 	}
 }
-function Avg() {
-	avar.innerText = ""
+function Avg(avg) {
+	if (avg=="yaz")
+		avar.innerText = ""
 	let ort = 0
 	for (var i = 0; i < dersler.length; i++) {
 		ort = (dersler[i][1]+dersler[i][2])/2
@@ -49,10 +50,12 @@ function Avg() {
 			max = ort
 			maxi = i
 		}
-		avar.innerText += dersler[i][0]+" "+ort+"\n"
+		if (avg=="yaz") 
+			avar.innerText += dersler[i][0]+" "+ort+"\n"
 	}
 }
 function Max() {
+	Avg("yazma")
 	mx.innerText = dersler[maxi][0]+" "+max
 }
 </script>
@@ -64,7 +67,7 @@ function Max() {
 	<p><input type="button" value="Add" onclick="Add()"></p>
 	<p>
 		<input type="button" value="Print" id="print" onclick="Print()">
-		<input type="button" value="Avg" id="avg" onclick="Avg()">
+		<input type="button" value="Avg" id="avg" onclick="Avg('yaz')">
 		<input type="button" value="Max" id="max" onclick="Max()">
 	</p>
 	<hr>
