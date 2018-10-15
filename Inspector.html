@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://maeyler.github.io/BLM305/work/inspector.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link href="./Inspector_files/inspector.css" rel="stylesheet" media="all">
+    <script src="./Inspector_files/inspector.js"></script>
+    <script src="./Inspector_files/c4_data.js"></script>
+    <title>Inspector </title>
+</head>
+
+<body style="">
+<p><b id="docName">Inspector V2.9</b> &nbsp;
+<a href="https://maeyler.github.io/JS/sss/">Read me</a> &nbsp;
+<a href="https://maeyler.github.io/JS/sss/Turkish">Turkish</a>
+</p>
+
+<script>
+"use strict";
+var a, c, code;  //global variables
+function init() {
+    let s = "Small is beautiful", d = new Date(),
+       len = 123, name = "Circle", pi = Math.PI, 
+       sqrt = Math.sqrt, power = Math.pow;
+    a = [0, 11, "22", "abc"];
+    c = {len, name, pi, sqrt, power};
+    let menu = {s, d, a, c, window, JOURNAL, EVENTS};
+    MENU = new Chap4(); //global
+    for (let k in menu) MENU[k] = menu[k];
+    display(MENU); 
+}
+    docName.innerText = document.title+" "+VERSION;
+    try {
+        inspect(document.body, init); //makes the table
+        //inp.value = "new Number(c.pi)";
+        code = document.createElement("pre");
+        document.body.appendChild(code);
+        code.innerText = Entry;
+    } catch(e) {
+        reportError(e);
+    }
+</script><table class="inspector">
+  <tbody><tr>
+    <th><button onclick="previous()" onmouseover="makeVisible(prev, true)" onmouseout="makeVisible(prev, false)">◀
+    <span id="prev">Display previous object</span></button>
+    &nbsp; Objects &nbsp;
+    <button onclick="removeIt(event.ctrlKey)" onmouseover="makeVisible(dele, true)" onmouseout="makeVisible(dele, false)">✘
+    <span id="dele">Delete current object<br>
+        (&lt;CTRL&gt; deletes all)</span></button>
+    </th>
+    <th><button onclick="display(MENU)" onmouseover="makeVisible(menu, true)" onmouseout="makeVisible(menu, false)">M
+    <span id="menu">Display Menu</span></button>
+    &nbsp; Properties
+    </th>
+  </tr>
+  <tr>
+    <td rowspan="3"><ul id="list1" onclick="doClick(event, this)" tabindex="0" onkeydown="doKey(event)"><li style="color: white; background: blue;"><b>Menu</b> Chap4</li></ul></td>
+    <td><ul id="list2" onclick="doClick(event, this)"><li class="cname">Chap4<span class="tip">Chap4<br>Menu<br>Object</span></li><li>s: "Small is beautiful"</li><li>d: Mon Oct 15 2018 20:49:31 ...</li><li>a: [0,11,22,abc]</li><li>c: <b>Object</b></li><li>window: <b>Window</b></li><li>JOURNAL: [<b>Entry</b> 3,[...</li><li>EVENTS: <b>Set</b></li><li class="cname">Menu</li><li class="cname">Object</li></ul></td>
+  </tr>
+  <tr>
+    <th>Methods
+    <input id="sorted" type="checkbox" checked="true" onclick="display(_)">
+    <span id="small">sort</span>
+    </th>
+  </tr>
+  <tr>
+    <td><ul id="list3" onclick="doClick(event, this)"><li class="cname">Chap4<span class="tip">Chap4<br>Menu<br>Object</span></li><li>analyze</li><li>correlation</li><li>max</li><li>pointOnCircle</li><li>tableFor</li><li>toString</li><li class="cname">Menu</li><li>allKeysIn</li><li>allValuesOf</li><li class="cname">Object</li></ul></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input id="inp" onkeyup="doEnter(event)">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" id="out">[object Menu] Chap4 — 7 properties and 8 methods</td>
+  </tr>
+</tbody></table><pre>class Entry {<br>  constructor(evt, sq) {<br>    this.events = evt; this.squirrel = sq<br>  }<br>  toString() {<br>    let s = this.events.length;<br>    if (this.squirrel) s += " ✘";<br>    return "[object Entry] " + s<br>  }<br>}</pre>
+
+
+
+</body></html>
