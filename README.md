@@ -7,3 +7,5 @@ BLM 305 dersinin ödevleri
 [Array Demo](https://enesbehlul.github.io/Advanced_Programming/Array_Demo.html)
 
 [Course Data](https://enesbehlul.github.io/Advanced_Programming/Course_data.html)
+
+[CW3](https://enesbehlul.github.io/Advanced_Programming/inspector.html)
