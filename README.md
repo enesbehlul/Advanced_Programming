@@ -11,3 +11,5 @@ BLM 305 dersinin ödevleri
 [CW3](https://enesbehlul.github.io/Advanced_Programming/inspector.html)
 
 [CW4](https://enesbehlul.github.io/Advanced_Programming/CW4/index.html)
+
+[HW2](https://enesbehlul.github.io/Advanced_Programming/2ndHomeWork/Students.html)
