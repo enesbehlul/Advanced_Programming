@@ -115,7 +115,7 @@ function doClick(evt) {
     }
 }
 function findID(id) {
-    let i = database.students.get(id);
+    let i = database.students.get(id.trim());
     return i;
 }
 function showStd(id) {
@@ -127,6 +127,7 @@ function showStd(id) {
     t += std.name+" "+std.gpa;
     report(t, std.courses.length+" courses", std.courses);
     examSchedule(id)
+    classMates(id)
 }
 function studentsIn(code) {
     code = code.toUpperCase();
@@ -178,6 +179,19 @@ function findBest() {
     for (let [id,std] of database.students) 
         if (std.gpa > b.gpa) b = std;
     report("Best: "+b.name, b.id);
+}
+function classMates(id){
+    let std = database.students.get(id)
+    let cmates=[],count=0
+    for(let [id,stu] of database.students){
+        for(let crs of std.courses){
+            if (stu.courses.includes(crs) && std.id != stu.id && !cmates.includes(stu)) {
+                cmates.push(stu)
+                count++
+            }
+        }
+    }
+    report(std.name+ " "+count +" classmates"," are", cmates)
 }
 </script>
 </head>
