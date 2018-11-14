@@ -16,4 +16,4 @@ BLM 305 dersinin ödevleri
 
 [CW5](https://enesbehlul.github.io/Advanced_Programming//Fetch%20remote.html)
 
-[CW6](https://enesbehlul.github.io/Advanced_Programming/timing.html)
+[CW6](https://enesbehlul.github.io/Advanced_Programming//timing.html)
