@@ -35,7 +35,6 @@ function fileSelect(t) { //target is the button
        	  reader.onload = function(evt) { //text
           	  var b = evt.target.result.replace(/</g, "&lt;");
               dosyalar.set(xa.name,b);
-           	  console.log(xa.name)
       	  };
        	 reader.readAsText(xa);
     	  } else {
