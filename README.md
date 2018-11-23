@@ -19,3 +19,5 @@ BLM 305 dersinin ödevleri
 [CW6](https://enesbehlul.github.io/Advanced_Programming//timing.html)
 
 [HW3](https://enesbehlul.github.io/Advanced_Programming/HW3/show.html)
+
+[CW7](https://enesbehlul.github.io/Advanced_Programming/CW7/table.html)
