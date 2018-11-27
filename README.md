@@ -2,22 +2,26 @@ Advanced_Programming
 
 BLM 305 dersinin ödevleri
 
-[Sayaç](https://enesbehlul.github.io/Advanced_Programming/damga_sayaci.html)
+CLASS WORKS
 
-[Array Demo](https://enesbehlul.github.io/Advanced_Programming/Array_Demo.html)
+CW1 [Sayaç](https://enesbehlul.github.io/Advanced_Programming/damga_sayaci.html)
 
-[Course Data](https://enesbehlul.github.io/Advanced_Programming/Course_data.html)
+CW2 [Array Demo](https://enesbehlul.github.io/Advanced_Programming/Array_Demo.html)
 
-[CW3](https://enesbehlul.github.io/Advanced_Programming/inspector.html)
+CW3 [Objects and Arrays](https://enesbehlul.github.io/Advanced_Programming/inspector.html)
 
-[CW4](https://enesbehlul.github.io/Advanced_Programming/CW4/index.html)
+CW4 [Asynchronous operations](https://enesbehlul.github.io/Advanced_Programming/CW4/index.html)
 
-[HW2](https://enesbehlul.github.io/Advanced_Programming/2ndHomeWork/Students.html)
+CW5 [File operations](https://enesbehlul.github.io/Advanced_Programming//Fetch%20remote.html)
 
-[CW5](https://enesbehlul.github.io/Advanced_Programming//Fetch%20remote.html)
+CW6 [Animation](https://enesbehlul.github.io/Advanced_Programming//timing.html)
 
-[CW6](https://enesbehlul.github.io/Advanced_Programming//timing.html)
+CW7 [DOM and PWA](https://enesbehlul.github.io/Advanced_Programming/CW7/table.html)
 
-[HW3](https://enesbehlul.github.io/Advanced_Programming/HW3/show.html)
+HOMEWORKS
 
-[CW7](https://enesbehlul.github.io/Advanced_Programming/CW7/table.html)
+HW1 [Course Data](https://enesbehlul.github.io/Advanced_Programming/Course_data.html)
+
+HW2 [Student Database](https://enesbehlul.github.io/Advanced_Programming/2ndHomeWork/Students.html)
+
+HW3 [Animation](https://enesbehlul.github.io/Advanced_Programming/HW3/show.html)
