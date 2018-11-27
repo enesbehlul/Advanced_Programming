@@ -1,6 +1,6 @@
 # Advanced Programming Techniques
 
-[My Github repo](https://enesbehlul.github.io/Advanced_Programming)
+[My Github repo](https://github.com/enesbehlul/Advanced_Programming) 
 
 ## BLM 305 dersinin ödevleri 
 
