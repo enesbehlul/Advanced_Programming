@@ -55,7 +55,7 @@ const url = "https://maeyler.github.io/JS/data/";
 function readData(file) {
     console.log("readData "+file);
     fetch(url+file)
-        .then(function(value){return value.text()}, report)
+        .then(r => r.text(), report)
         .then(addStudents, report);
 }
 function readCourses(file) {
