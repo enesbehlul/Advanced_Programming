@@ -1,11 +1,11 @@
 {
-  "name": "BLM305",
-  "short_name": "BLM305",
+  "name": "Advanced Programming PWA",
+  "short_name": "PWA",
   "description": "Advanced Programming work files",
-  "start_url": "/BLM305/",
+  "start_url": "/Advanced_Programming/index.html",
   "display": "standalone",
-  "background_color": "yellow",
-  "theme_color": "yellow",
+  "background_color": "#004684",
+  "theme_color": "#ffef03",
   "icons": [
     {
       "src": "images/Picachu.png",
