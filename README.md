@@ -12,7 +12,7 @@ CW2 [Array Demo](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/Ar
 
 CW3 [Objects and Arrays](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/inspector.html)
 
-CW4 [Asynchronous operations](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/CW4/index.html)
+CW4 [Asynchronous operations](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/CW4//index.html)
 
 CW5 [File operations](https://enesbehlul.github.io/Advanced_Programming/ClassWorks//Fetch%20remote.html)
 
@@ -24,6 +24,6 @@ CW7 [DOM and PWA](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/C
 
 HW1 [Course Data](https://enesbehlul.github.io/Advanced_Programming/HomeWorks/Course_data.html)
 
-HW2 [Student Database](https://enesbehlul.github.io/Advanced_Programming/HomeWorks/2ndHomeWork/Students.html)
+HW2 [Student Database](https://enesbehlul.github.io/Advanced_Programming/HomeWorks/2ndHomeWork//Students.html)
 
 HW3 [Animation](https://enesbehlul.github.io/Advanced_Programming/HomeWorks/HW3/show.html)
