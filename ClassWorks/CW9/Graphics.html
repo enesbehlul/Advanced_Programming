@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Canvas</title>
+
+  <style>
+    canvas {
+        background: brown;
+        font: 10px arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Using Canvas</h2>
+<button type="button" onclick="swap()">SWAP</button>
+<button type="button" onclick="triangle()">Draw</button>
+Arc border: <input id= "aborder" type="color" value="#0000ff" onchange="changeColor(value,afill.value,rborder.value, rfill.value)" >
+Arc fill: <input id= "afill" type="color" value="#ffff00" onchange="draw(aborder.value,value,rborder.value, rfill.value)">
+Rect border: <input id= "rborder" type="color" value="#ff0000" onchange="changeColor(aborder.value,afill.value,value, rfill.value)" >
+Rect fill: <input id= "rfill" type="color" value="#ffc0cb" onchange="draw(aborder.value,afill.value,rborder.value, value)">
+<hr />
+
+<canvas id=canvas width=340 height=100></canvas>
+<p>Canvas is an image drawn by JavaScript</p>
+<pre id=sample></pre>
+
+<hr />
+
+<p>Ref: <i>Eloquent JavaScript</i>,
+<a href="http://eloquentjavascript.net/17_canvas.html"
+   target="ExternalDocument"> Chap 17</a>
+</p>
+
+<script>
+"use strict";
+var counter = 0;
+function draw(aborder = "blue", afill = "yellow", rborder = "red", rfill = "pink") {
+    cx.clearRect(0, 0, canvas.width, canvas.height);
+    cx.beginPath(); cx.lineWidth = 4;
+    cx.fillStyle = afill; cx.strokeStyle = aborder;
+    cx.arc(50, 50, 40, 0, 2*Math.PI);
+    cx.fill(); cx.stroke();
+    cx.fillStyle = "black";
+    cx.fillText("arc",44,55);
+
+    cx.beginPath(); cx.lineWidth = 5;
+    cx.fillStyle = rfill; cx.strokeStyle = rborder;
+    cx.rect(110, 10, 100, 80);
+    cx.fill(); cx.stroke();
+    cx.fillStyle = "black";
+    cx.fillText("rect",148,55);
+}
+    sample.innerText = draw;
+    const cx = canvas.getContext("2d");
+    draw();
+
+function right(){
+  cx.beginPath(); cx.lineWidth = 6;
+  cx.fillStyle = "pink"; cx.strokeStyle = "red";
+  cx.arc(160, 50, 40, 0, 2*Math.PI);
+  cx.fill(); cx.stroke();
+  cx.fillStyle = "black";
+  cx.fillText("arc",155,55);
+
+  cx.beginPath(); cx.lineWidth = 5;
+  cx.fillStyle = "yellow"; cx.strokeStyle = "blue";
+  cx.rect(220, 10, 100, 80);
+  cx.fill(); cx.stroke();
+  cx.fillStyle = "black";
+  cx.fillText("rect",260,55);
+}
+
+function swap() {
+    cx.clearRect(0, 0, canvas.width, canvas.height);
+    if(counter%2 == 0){
+      right();
+   }
+   else {
+     draw();
+   }
+   counter++;
+}
+
+function triangle(){
+    cx.clearRect(0, 0, canvas.width, canvas.height);
+    right();
+    var sWidth = 100;
+    var sHeight = 140;
+    var path=new Path2D();
+    path.moveTo((sWidth/2)+50,sHeight/2);
+    path.lineTo((sWidth/2),(sHeight/2)-50);
+    path.lineTo((sWidth/2)-50,sHeight/2);
+    cx.fill(path);
+    counter++;
+}
+function changeColor(aborder, afill, rborder, rfill){
+    draw(aborder, afill, rborder, rfill);
+}
+</script>
+
+</body>
+</html>

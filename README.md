@@ -1,8 +1,8 @@
 # Advanced Programming Techniques
 
-[My Github repo](https://github.com/enesbehlul/Advanced_Programming) 
+[My Github repo](https://github.com/enesbehlul/Advanced_Programming)
 
-## BLM 305 dersinin ödevleri 
+## BLM 305 dersinin ödevleri
 
 ### CLASS WORKS
 
@@ -19,6 +19,8 @@ CW5 [File operations](https://enesbehlul.github.io/Advanced_Programming/ClassWor
 CW6 [Animation](https://enesbehlul.github.io/Advanced_Programming/ClassWorks//timing.html)
 
 CW7 [DOM and PWA](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/CW7/table.html)
+
+CW9 [SVG or Canvas](https://enesbehlul.github.io/Advanced_Programming/ClassWorks/CW9/Graphics.html)
 
 ### HOMEWORKS
 
