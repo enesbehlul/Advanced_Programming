@@ -17,6 +17,33 @@ class User {
         else
             console.log("harcama yapilamadi. bilgileri kontrol ediniz")
     }
+    compute_total_income(){
+	var total = 0
+	for(let i of this.accounts.values()) {
+	    for(let j of i.actions.values()) {
+	    	if(j.action_type == "income")
+		    total+=j.amount
+            }
+	}    
+	return total;
+    }
+    compute_total_expence(){
+	var total = 0
+	for(let i of this.accounts.values()) {
+	    for(let j of i.actions.values()) {
+	    	if(j.action_type == "expence")
+		    total+=j.amount
+            }
+	}    
+	return total;
+    }
+    compute_total_actions(){
+	var total = 0
+	for(let i of this.accounts.values()) {
+	    total += i.balance
+	}    
+	return total;
+    }
     toString() {
         return this.id + " " + this.name + " " + this.surname
     }
