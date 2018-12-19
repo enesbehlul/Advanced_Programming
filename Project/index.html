@@ -1,13 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Gelir Gider</title>
-    <script src="classes.js"></script>
+    <title>Money Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://static.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+	<script src="https://static.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+ <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+<div id="giris">
+    <form action="/action_page.php">
+      <div class="imgcontainer">
+        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id = "userId">
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id = "psw">
+            
+        <button type="button" onclick="managementScreen(userId.value, psw.value)">Login</button>
+        <button type="button" onclick="managementScreen(1,'123')">TRY AS GUEST</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+</div>
+    <script src="classes.js"></script>
+    <script type="text/javascript">
+        var a = '<div class="top">\
+        	<div id= "userInfo", class="userInfo">\
+        	User: \
+        	</div>\
+            <div class="budget">\
+                <div class="budget__title"\
+                    Available Budget in <span class="budget__title--month">%Month%</span>:\
+                </div>\
+                \
+                <div class="budget__value">+ 2,345.64</div>\
+                \
+                <div class="budget__income clearfix">\
+                    <div class="budget__income--text">Income</div>\
+                    <div class="right">\
+                        <div class="budget__income--value">+ 4,300.00</div>\
+                        <div class="budget__income--percentage">&nbsp;</div>\
+                    </div>\
+                </div>\
+                \
+                <div class="budget__expenses clearfix">\
+                    <div class="budget__expenses--text">Expenses</div>\
+                    <div class="right clearfix">\
+                        <div class="budget__expenses--value">- 1,954.36</div>\
+                        <div class="budget__expenses--percentage">45%</div>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+        \
+        <div class="bottom">\
+            <div class="add">\
+                <div class="add__container">\
+                    <select class="add__type">\
+                        <option value="income" selected>+</option>\
+                        <option value="expence">-</option>\
+                    </select>\
+                    <input type="text" class="add__description" placeholder="Add description">\
+                    <input type="text" class="add__category" placeholder="Add category">\
+                    <input type="number" class="add__value" placeholder="Value">\
+                    <button class="add__btn" onclick="addAction()">Add to list</button>\
+                    <p id="error"></p>\
+                </div>\
+            </div>\
+            \
+            <div class="container clearfix">\
+                <div class="income">\
+                    <h2 class="icome__title">Income</h2>\
+                    \
+                    <div class="income__list">\
+                        \
+                    </div>\
+                </div>\
+                                \
+                <div class="expenses">\
+                    <h2 class="expenses__title">Expenses</h2>\
+                    \
+                    <div class="expenses__list">\
+\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+        <div id="container"></div>\
+'
+    </script>
+
 
 </body>
 </html>
