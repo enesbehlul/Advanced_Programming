@@ -284,6 +284,7 @@ function drawPie(){
     for (let i of categories.keys()){
         data.push({x: i, value: categories.get(i)})
     }
+    console.log(data)
     // create the chart
     var chart = anychart.pie();
 
