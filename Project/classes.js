@@ -1,7 +1,7 @@
 class User {
     constructor(id, name, surname, password) {
         this.id = id
-        this.name = name 
+        this.name = name
         this.surname = surname
         this.accounts = new Map()
         console.log("user created");
@@ -36,7 +36,7 @@ class User {
     	    	if(j.action_type == "income")
     		    total+=j.amount
                 }
-    	}    
+    	}
     	return total;
     }
     compute_total_expence(){
@@ -46,14 +46,14 @@ class User {
     	    	if(j.action_type == "expence")
     		    total+=j.amount
                 }
-    	}    
+    	}
     	return total;
     }
     compute_total_actions(){
     	var total = 0
     	for(let i of this.accounts.values()) {
     	    total += i.balance
-    	}    
+    	}
     	return total;
     }
 
@@ -129,8 +129,9 @@ function addAction(){
     var value = document.querySelector(DOMstrings.inputValue).value;
     var category = document.querySelector(DOMstrings.inputCategory).value;
     //clear textfield
-    //document.querySelector(DOMstrings.inputValue).value = ""
-    //document.querySelector(DOMstrings.inputDescription).value = ""
+    document.querySelector(DOMstrings.inputValue).value = ""
+    document.querySelector(DOMstrings.inputDescription).value = ""
+    document.querySelector(DOMstrings.inputCategory).value = ""
 
     let err = document.getElementById("error");
     if (description != "" && value != "" && category != "") {
@@ -187,8 +188,8 @@ function updateIncomeAndExpenceList(){
             // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
         }
-    }   
-    displayBudget();    
+    }
+    displayBudget();
 }
 
 var DOMstrings={
@@ -293,12 +294,12 @@ function drawPie(){
     chart.data(data);
 
     // sort elements
-    chart.sort("desc");  
+    chart.sort("desc");
 
     // set legend position
     chart.legend().position("right");
     // set items layout
-    chart.legend().itemsLayout("vertical");  
+    chart.legend().itemsLayout("vertical");
 
     // display the chart in the container
     chart.container('container');
