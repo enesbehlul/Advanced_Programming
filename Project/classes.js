@@ -181,8 +181,8 @@ function updateIncomeAndExpenceList(){
 
             // Replace the placeholder text with some actual data,
             newHtml = html.replace(/%id%/g, j.id);
-            newHtml = newHtml.replace('%description%', j.description +"&emsp;&emsp;&emsp;&emsp;"+j.category);
-            newHtml = newHtml.replace('%value%', j.amount);
+            newHtml = newHtml.replace('%description%', j.description +"&emsp;&emsp;&emsp;<b>"+j.category+"</b>");
+            newHtml = newHtml.replace('%value%', j.amount+" ₺");
 
             // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
@@ -234,6 +234,7 @@ function displayMonth(){
     months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     month = now.getMonth();
 
+    console.log(document.querySelector(DOMstrings.dateLabel).textContent);
     document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
 }
 
@@ -242,9 +243,9 @@ function displayBudget(){//gelir - gider ne kadar
     var budget = user.compute_total_actions();
     budget > 0 ? type = 'inc' : type = 'exp';
 
-    document.querySelector(DOMstrings.budgetLabel).textContent = "Total: "+user.compute_total_actions()+" $";
-    document.querySelector(DOMstrings.incomeLabel).textContent = user.compute_total_income()+" $";
-    document.querySelector(DOMstrings.expensesLabel).textContent = user.compute_total_expence()+" $";
+    document.querySelector(DOMstrings.budgetLabel).textContent = "Budget: "+user.compute_total_actions()+" ₺";
+    document.querySelector(DOMstrings.incomeLabel).textContent = user.compute_total_income()+" ₺";
+    document.querySelector(DOMstrings.expensesLabel).textContent = user.compute_total_expence()+" ₺";
 
     //Gelirin yuzde kaci gider...
     percentage = Math.round((user.compute_total_expence() / user.compute_total_income()) * 100)
