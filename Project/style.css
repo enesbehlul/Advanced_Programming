@@ -146,7 +146,6 @@ body {
 }
 
 .add__categorySelect {
-    width: 200px;
     border: 1px solid #e7e7e7;
     height: 44px;
     font-size: 18px;
@@ -370,4 +369,8 @@ span.psw {
 
 #container{
     height: 350px;
+}
+
+label{
+    font-size: 20px;
 }
