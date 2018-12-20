@@ -259,7 +259,7 @@ function displayBudget(){//gelir - gider ne kadar
 
 //kullanici adi ve sifrenin txt dosyasindan okunmasi
 function readUserData(loginUsers) {
-    fetch("https://raw.githubusercontent.com/enesbehlul/dummy/master/sifre.txt")
+    fetch("https://raw.githubusercontent.com/enesbehlul/Advanced_Programming/master/Project/sifre.txt")
         .then(r => r.text()).then(x => loginUsers.push(x.split("\n")));
 }
 
