@@ -128,6 +128,7 @@ function addAction(){
     var description = document.querySelector(DOMstrings.inputDescription).value;
     var value = document.querySelector(DOMstrings.inputValue).value;
     var category = document.querySelector(DOMstrings.inputCategory).value;
+    var categorySelect = document.getElementById("selectCategory").value;
     //clear textfield
     document.querySelector(DOMstrings.inputValue).value = ""
     document.querySelector(DOMstrings.inputDescription).value = ""
@@ -159,6 +160,7 @@ function addAction(){
         err.innerText = "Please fill the blanks";
     }
     drawPie();
+    addCategoryOption();
 }
 
 function updateIncomeAndExpenceList(){
@@ -174,7 +176,6 @@ function updateIncomeAndExpenceList(){
             if(j.action_type === 'income'){
                 element = DOMstrings.incomeContainer;
                 html='<div class="item clearfix" id="%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value"> %value%</div><div class="item__delete"><button id="%id%" class="item__delete--btn" onclick="del(this.id)">x</button></div></div></div>'
-
             }else if(j.action_type === 'expence'){
                 element = DOMstrings.expensesContainer;
                 html='<div class="item clearfix" id="%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value"> %value%</div><div class="item__delete"><button id="%id%" class="item__delete--btn" onclick="del(this.id)">x</button></div></div></div>'
@@ -210,19 +211,20 @@ var DOMstrings={
 };
 var user;
 function managementScreen(id, pass){
-    for(let i of loginUsers){
-        if (i[0] == id && i[1] == pass) {
+    //for(let i of loginUsers){
+        //if (i[0] == id && i[1] == pass) {
             user = users.get(parseInt(id,10));
             giris.innerHTML = a;
             userInfo.innerText += user.name + " " + user.surname;
             displayMonth();
             displayBudget();
             updateIncomeAndExpenceList();
-            drawPie()
+            drawPie();
+            addCategoryOption()
             console.log("Login success.");
-            return;
-        }
-    }
+            //return;
+        //}
+    //}
     console.log("wrong id or password");
 }
 
@@ -266,21 +268,9 @@ function readUserData(loginUsers) {
 function drawPie(){
     document.getElementById("container").innerText = '';
     anychart.onDocumentReady(function() {
-    var categories = new Map()
     var data = [];
-    for(let i of user.accounts.values()){
-        let totalC = 0;
-        for(let j of i.actions.values()){
-            if (j.action_type != "income" && !categories.has(j.category)) {
-                categories.set(j.category, j.amount);
-            } else if (j.action_type != "income" && categories.has(j.category)) {
-                totalC = categories.get(j.category)
-                totalC += j.amount
-                categories.set(j.category, totalC);
-            }
-        }
-    }
     // set the data
+    var categories = createCategories();
     for (let i of categories.keys()){
         data.push({x: i, value: categories.get(i)})
     }
@@ -314,4 +304,50 @@ function del(id){
     updateIncomeAndExpenceList();
     displayBudget();
     drawPie();
+}
+
+function addCategoryOption() {
+    document.createElement("option");
+    var x = document.getElementById("selectCategory");
+    x.innerHTML = ""
+    var selectOption = document.createElement("option");
+    selectOption.text = "---select---"
+    x.add(selectOption)
+    categories = createCategories();
+    for (let i of categories.keys()){
+        var option = document.createElement("option");
+        option.text = i;
+        console.log(i);
+        x.add(option)
+    }
+    x.selectedIndex = 0
+    document.querySelector(DOMstrings.inputCategory).removeAttribute("disabled")
+}
+
+function createCategories(){
+    var categories = new Map()
+    for(let i of user.accounts.values()){
+        let totalC = 0;
+        for(let j of i.actions.values()){
+            if (j.action_type != "income" && !categories.has(j.category)) {
+                categories.set(j.category, j.amount);
+            } else if (j.action_type != "income" && categories.has(j.category)) {
+                totalC = categories.get(j.category)
+                totalC += j.amount
+                categories.set(j.category, totalC);
+            }
+        }
+    }
+    return categories;
+}
+
+function categorySelectClicked(value){
+    if (value != '---select---') {
+        document.querySelector(DOMstrings.inputCategory).setAttribute("disabled", true)
+        document.querySelector(DOMstrings.inputCategory).value = value;
+    }
+    else{
+        document.querySelector(DOMstrings.inputCategory).removeAttribute("disabled")
+        document.querySelector(DOMstrings.inputCategory).value = ""
+    }
 }

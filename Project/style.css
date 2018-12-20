@@ -134,7 +134,19 @@ body {
 }
 
 .add__type {
-    width: 55px;
+    width: 95px;
+    border: 1px solid #e7e7e7;
+    height: 44px;
+    font-size: 18px;
+    color: inherit;
+    background-color: #fff;
+    margin-right: 10px;
+    font-weight: 300;
+    transition: border 0.3s;
+}
+
+.add__categorySelect {
+    width: 200px;
     border: 1px solid #e7e7e7;
     height: 44px;
     font-size: 18px;

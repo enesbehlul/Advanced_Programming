@@ -71,9 +71,14 @@
         <div class="bottom">\
             <div class="add">\
                 <div class="add__container">\
+                <label id="selectTypeLabel" for="selectCategory">Type:</label>\
                     <select class="add__type">\
-                        <option value="income" selected>+</option>\
-                        <option value="expence">-</option>\
+                        <option value="income" selected>Income</option>\
+                        <option value="expence">Expense</option>\
+                    </select>\
+                    <label id="selectCategoryLabel" for="selectCategory">Category:</label>\
+                    <select id ="selectCategory" class="add__categorySelect" onclick="categorySelectClicked(value)">\
+                        <option value="select" selected>---select---</option>\
                     </select>\
                     <input type="text" class="add__description" placeholder="Add description">\
                     <input type="text" class="add__category" placeholder="Add category">\
