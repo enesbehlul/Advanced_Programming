@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>Money Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://static.anychart.com/js/8.0.1/anychart-core.min.js"></script>
-	<script src="https://static.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
- <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="giris">
@@ -78,7 +76,7 @@
                     </select>\
                     <br><br>\
                     <label id="selectCategoryLabel" for="selectCategory">Category:</label>\
-                    <select id ="selectCategory" class="add__categorySelect" onclick="categorySelectClicked(value)">\
+                    <select id ="selectCategory" class="add__categorySelect" onchange="categorySelectClicked(value)">\
                         <option value="select" selected>---select---</option>\
                     </select>\
                     <input type="text" class="add__description" placeholder="Add description">\
@@ -107,11 +105,14 @@
                 </div>\
             </div>\
         </div>\
-        <div id="container"></div>\
-        <p><a href="https://codepen.io/SmileySteven/full/KXmNZN">References</a></p>\
+        <canvas id="myCanvas"></canvas>\
+        <div id="myLegend"></div>\
+        <br><br><br>\
+        References:\
+        <p><a href="https://codepen.io/SmileySteven/full/KXmNZN">CSS</a></p>\
+        <p><a href="https://code.tutsplus.com/tutorials/how-to-draw-a-pie-chart-and-doughnut-chart-using-javascript-and-html5-canvas--cms-27197">Pie chart with canvas</a></p>\
 '
     </script>
-
 
 </body>
 </html>

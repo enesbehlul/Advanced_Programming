@@ -129,10 +129,6 @@ function addAction(){
     var value = document.querySelector(DOMstrings.inputValue).value;
     var category = document.querySelector(DOMstrings.inputCategory).value;
     var categorySelect = document.getElementById("selectCategory").value;
-    //clear textfield
-    document.querySelector(DOMstrings.inputValue).value = ""
-    document.querySelector(DOMstrings.inputDescription).value = ""
-    document.querySelector(DOMstrings.inputCategory).value = ""
 
     let err = document.getElementById("error");
     if (description != "" && value != "" && category != "") {
@@ -155,12 +151,16 @@ function addAction(){
         //ekranin guncellenmesi
         displayBudget();
         updateIncomeAndExpenceList()
+        drawPie();
+        addCategoryOption();
+        //clear textfield
+        document.querySelector(DOMstrings.inputValue).value = ""
+        document.querySelector(DOMstrings.inputDescription).value = ""
+        document.querySelector(DOMstrings.inputCategory).value = ""
         err.innerText = "";
     } else {
         err.innerText = "Please fill the blanks";
     }
-    drawPie();
-    addCategoryOption();
 }
 
 function updateIncomeAndExpenceList(){
@@ -211,8 +211,8 @@ var DOMstrings={
 };
 var user;
 function managementScreen(id, pass){
-    //for(let i of loginUsers){
-        //if (i[0] == id && i[1] == pass) {
+    for(let i of loginUsers){
+        if (i[0] == id && i[1] == pass) {
             user = users.get(parseInt(id,10));
             giris.innerHTML = a;
             userInfo.innerText += user.name + " " + user.surname;
@@ -222,22 +222,18 @@ function managementScreen(id, pass){
             drawPie();
             addCategoryOption()
             console.log("Login success.");
-            //return;
-        //}
-    //}
+            return;
+        }
+    }
     console.log("wrong id or password");
 }
 
 function displayMonth(){
     var now , year,month,months;
-
     now = new Date();
-
     year = now.getFullYear();
     months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     month = now.getMonth();
-
-    console.log(document.querySelector(DOMstrings.dateLabel).textContent);
     document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
 }
 
@@ -265,40 +261,6 @@ function readUserData(loginUsers) {
         .then(r => r.text()).then(x => loginUsers.push(x.split("\n")));
 }
 
-function drawPie(){
-    document.getElementById("container").innerText = '';
-    anychart.onDocumentReady(function() {
-    var data = [];
-    // set the data
-    var categories = createCategories();
-    for (let i of categories.keys()){
-        data.push({x: i, value: categories.get(i)})
-    }
-    console.log(data)
-    // create the chart
-    var chart = anychart.pie();
-
-    // set the chart title
-    chart.title("The rate of expenses.");
-
-    // add the data
-    chart.data(data);
-
-    // sort elements
-    chart.sort("desc");
-
-    // set legend position
-    chart.legend().position("right");
-    // set items layout
-    chart.legend().itemsLayout("vertical");
-
-    // display the chart in the container
-    chart.container('container');
-    chart.draw();
-
-    });
-}
-
 function del(id){
     user.remove_action(parseInt(id), 1);
     updateIncomeAndExpenceList();
@@ -317,7 +279,6 @@ function addCategoryOption() {
     for (let i of categories.keys()){
         var option = document.createElement("option");
         option.text = i;
-        console.log(i);
         x.add(option)
     }
     x.selectedIndex = 0
@@ -350,4 +311,136 @@ function categorySelectClicked(value){
         document.querySelector(DOMstrings.inputCategory).removeAttribute("disabled")
         document.querySelector(DOMstrings.inputCategory).value = ""
     }
+}
+
+var Piechart = function(options){
+    this.options = options;
+    this.canvas = options.canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.colors = options.colors;
+ 
+    this.draw = function(){
+        var total_value = 0;
+        var color_index = 0;
+        for (var categ in this.options.data){
+            var val = this.options.data[categ];
+            total_value += val;
+        }
+ 
+        var start_angle = 0;
+        for (categ in this.options.data){
+            val = this.options.data[categ];
+            var slice_angle = 2 * Math.PI * val / total_value;
+ 
+            drawPieSlice(
+                this.ctx,
+                this.canvas.width/2,
+                this.canvas.height/2,
+                Math.min(this.canvas.width/2,this.canvas.height/2),
+                start_angle,
+                start_angle+slice_angle,
+                this.colors[color_index%this.colors.length]
+            );
+ 
+            start_angle += slice_angle;
+            color_index++;
+        }
+ 
+        //drawing a white circle over the chart
+        //to create the doughnut chart
+        if (this.options.doughnutHoleSize){
+            drawPieSlice(
+                this.ctx,
+                this.canvas.width/2,
+                this.canvas.height/2,
+                this.options.doughnutHoleSize * Math.min(this.canvas.width/2,this.canvas.height/2),
+                0,
+                2 * Math.PI,
+                "#ff0000"
+            );
+        }
+        start_angle = 0;
+        for (categ in this.options.data){
+            val = this.options.data[categ];
+            slice_angle = 2 * Math.PI * val / total_value;
+            var pieRadius = Math.min(this.canvas.width/2,this.canvas.height/2);
+            var labelX = this.canvas.width/2 + (pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+            var labelY = this.canvas.height/2 + (pieRadius / 2) * Math.sin(start_angle + slice_angle/2);
+         
+            if (this.options.doughnutHoleSize){
+                var offset = (pieRadius * this.options.doughnutHoleSize ) / 2;
+                labelX = this.canvas.width/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+                labelY = this.canvas.height/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2);               
+            }
+         
+            var labelText = Math.round(100 * val / total_value);
+            this.ctx.fillStyle = "white";
+            this.ctx.font = "bold 20px Arial";
+            if(labelText > 0) {
+                this.ctx.fillText(labelText+"%", labelX,labelY);
+            }
+            start_angle += slice_angle;
+        }
+        if (this.options.legend){
+            color_index = 0;
+            var legendHTML = "";
+            for (categ in this.options.data){
+                legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"</div>";
+            }
+            this.options.legend.innerHTML = legendHTML;
+        }
+    }
+}
+
+function drawLine(ctx, startX, startY, endX, endY){
+    ctx.beginPath();
+    ctx.moveTo(startX,startY);
+    ctx.lineTo(endX,endY);
+    ctx.stroke();
+}
+function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color ){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(centerX,centerY);
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+    ctx.closePath();
+    ctx.fill();
+}
+function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+    ctx.stroke();
+}
+
+function drawPie(){
+    var myCanvas = document.getElementById("myCanvas");
+    myCanvas.width = 300;
+    myCanvas.height = 300;
+
+    var categories = createCategories();
+    var myVinyls = {}; 
+    for (let i of categories.keys()){
+        myVinyls[i] = categories.get(i);
+    }
+    var ctx = myCanvas.getContext("2d");
+    var myPiechart = new Piechart(
+        {
+            canvas:myCanvas,
+            data:myVinyls,
+            colors:["#fde23e","#f16e23", "#57d9ff","#937e88"]
+        }
+    );
+    myPiechart.draw();
+
+    var myLegend = document.getElementById("myLegend");
+     
+    var myDougnutChart = new Piechart(
+        {
+            canvas:myCanvas,
+            data:myVinyls,
+            colors:["#fde23e","#f16e23", "#57d9ff","#937e88"],
+            legend:myLegend
+        }
+    );
+    myDougnutChart.draw();
 }

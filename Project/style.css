@@ -374,3 +374,11 @@ span.psw {
 label{
     font-size: 20px;
 }
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
