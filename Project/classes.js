@@ -362,6 +362,7 @@ var Piechart = function(options){
         start_angle = 0;
         for (categ in this.options.data){
             val = this.options.data[categ];
+            //yuzdelik karsiligini derece karsiligina cevirme
             slice_angle = 2 * Math.PI * val / total_value;
             var pieRadius = Math.min(this.canvas.width/2,this.canvas.height/2);
             var labelX = this.canvas.width/2 + (pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
@@ -438,7 +439,7 @@ function drawPie(){
         {
             canvas:myCanvas,
             data:myVinyls,
-            colors:['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000'],
+            colors:['#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#e6194b', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#ffe119', '#808000', '#ffd8b1', '#000075', '#808080', '#3cb44b', '#ffffff', '#000000'],
             legend:myLegend
         }
     );

@@ -222,7 +222,7 @@ h2 {
 .expenses__title { color: #FF5049; }
 
 .item {
-    padding: 13px;
+    padding: 5px;
     border-bottom: 1px solid #e7e7e7;
 }
 
@@ -253,12 +253,18 @@ h2 {
 .income .item__value,
 .income .item__delete--btn {
     color: #28B9B5;
+    padding: 0px 0px;
+    margin-left: 15px;
+    font-size: 18px;
 }
 
 .expenses .item__value,
 .expenses .item__percentage,
 .expenses .item__delete--btn {
     color: #FF5049;
+    padding: 0px 0px;
+    margin-left: 15px;
+    font-size: 18px;
 }
 
 
@@ -267,14 +273,11 @@ h2 {
 }
 
 .item__delete--btn {
-    font-size: 22px;
     background: none;
     border: none;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
-    line-height: 1;
-    display: none;
 }
 
 .item__delete--btn:focus { outline: none; }
@@ -381,4 +384,9 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+#canvasLabel {
+    text-align: center;
+    margin-bottom: 10px;
 }
