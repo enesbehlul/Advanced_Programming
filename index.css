@@ -1,0 +1,47 @@
+.links {
+  background-color: #47ABCC;
+  color: white;
+  padding: 2px 5px;
+  text-decoration: none;
+}
+
+.links:hover {
+  background-color: #555;
+}
+
+.links:active {
+  background-color: black;
+}
+
+#page{
+	background-color: #7a9ac1;
+	margin-left: auto;
+	margin-right: auto;
+	width: 320px;
+	text-align: left;
+}
+
+#baslik,#term{
+	background-color: #93b1d6;
+	text-align: center;
+}
+
+#hw {
+    background-color: #93b1d6;
+}
+
+body{
+	position: relative;
+	background-color: silver;
+}
+
+p{
+	position: relative;
+}
+
+a{
+	position: relative;
+}
+h1,h2,h3{
+	text-align: center
+}
